@@ -1,0 +1,20 @@
+﻿@model IEnumerable<NZBDash.Common.Models.ViewModels.Sonarr.SonarrSeriesViewModel>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+
+    </div>
+    <div class="panel-body">
+        @foreach (var series in Model)
+        {
+            <div class="col-md-12 row grid-row">
+                <div class="col-md-2">@series.CleanTitle</div>
+                <div class="col-md-2">@series.Status</div>
+                <div class="col-md-4">@series.Overview</div>
+                <div class="col-md-2">@series.EpisodeCount</div>
+                <div class="col-md-2">@series.FirstAired</div>
+            </div>
+        }
+    </div>
+</div>

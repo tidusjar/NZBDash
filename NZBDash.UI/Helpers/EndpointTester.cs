@@ -1,27 +1,23 @@
 ﻿using System;
 
-using NZBDash.Api.Controllers;
 using NZBDash.Common;
+using NZBDash.Common.Interfaces;
+using NZBDash.ThirdParty.Api.Interfaces;
 
 namespace NZBDash.UI.Helpers
 {
     public class EndpointTester
     {
 
-        public EndpointTester()
-            : this(new NLogLogger(typeof(EndpointTester)))
+        public EndpointTester(IThirdPartyService service)
         {
-            Api = new StatusApiController();
-        }
-
-        public EndpointTester(ILogger logger)
-        {
-            _logger = logger;
+            Api = service;
+            _logger = new NLogLogger(typeof(EndpointTester));
         }
 
         private ILogger _logger { get; set; }
 
-        public StatusApiController Api { get; set; }
+        public IThirdPartyService Api { get; set; }
 
         public bool TestApplicationConnectivity(Applications application, string apiKey, string ipAddress, string password, string userName)
         {
@@ -53,22 +49,31 @@ namespace NZBDash.UI.Helpers
         public bool NzbGetConnection(string ip, string username, string password)
         {
             _logger.Trace("Calling GetNZBGetStatus");
-            var result = Api.GetNzbGetStatus(ip, username, password);
+            try
+            {
+                var result = Api.GetNzbGetStatus(ip, username, password);
+                _logger.Trace(string.Format("Calling GetNZBGetStatus result = {0}", result.version != null));
+                return result.version != null;
+            }
+            catch (Exception e)
+            {
+                _logger.Fatal(e);
+                return false;
+            }
 
-            _logger.Trace(string.Format("Calling GetNZBGetStatus result = {0}", result.version != null));
-            return result.version != null;
         }
 
         public bool SabNzbConnection(string ip, string apiKey)
         {
             try
             {
-                var result = Api.GetSabNzb(ip, apiKey);
+                var result = Api.GetSanNzbQueue(ip, apiKey);
 
-                return result.QueueObject.state != null;
+                return result.state != null;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                _logger.Fatal(e);
                 return false;
             }
         }
@@ -80,8 +85,9 @@ namespace NZBDash.UI.Helpers
                 var result = Api.GetCouchPotatoStatus(ip, api);
                 return result.success;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                _logger.Fatal(e);
                 return false;
             }
         }
@@ -93,8 +99,9 @@ namespace NZBDash.UI.Helpers
                 var result = Api.GetSonarrSystemStatus(ip, api);
                 return result.version != null;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                _logger.Fatal(e);
                 return false;
             }
         }
@@ -106,8 +113,9 @@ namespace NZBDash.UI.Helpers
                 var result = Api.GetPlexServers(ip);
                 return result.Server.Name != null;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                _logger.Fatal(e);
                 return false;
             }
         }

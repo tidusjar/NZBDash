@@ -2,13 +2,20 @@
 
 using Microsoft.AspNet.SignalR;
 
-using NZBDash.Core.Configuration;
+using NZBDash.Core.Interfaces;
 using NZBDash.Core.Model.DTO;
 
 namespace NZBDash.UI.Hubs
 {
     public class LinksConfigurationHub : Hub
     {
+        private ILinksConfiguration LinksService { get; set; }
+
+        public LinksConfigurationHub(ILinksConfiguration linksService)
+        {
+            LinksService = linksService;
+        }
+
         public void AddLink(string linkName, string linkEndpoint)
         {
             Uri uri = null;
@@ -22,9 +29,8 @@ namespace NZBDash.UI.Hubs
                 return;
             }
 
-            var config = new LinksConfiguration();
             var dto = new LinksConfigurationDto { LinkEndpoint = linkEndpoint, LinkName = linkName };
-            var result = config.AddLink(dto);
+            var result = LinksService.AddLink(dto);
 
             if (result != null)
             {
@@ -35,17 +41,10 @@ namespace NZBDash.UI.Hubs
 
         public void RemoveLink(int modelId)
         {
-            var config = new LinksConfiguration();
-            var result = config.RemoveLink(modelId);
+            LinksService.RemoveLink(modelId);
 
-            if (result)
-            {
-                Clients.All.success(string.Format("You have removed the link!"));
-                Clients.All.remove(modelId);
-                return;
-            }
-            Clients.All.error(string.Format("We could not remove the link!"));
-
+            Clients.All.success(string.Format("You have removed the link!"));
+            Clients.All.remove(modelId);
         }
     }
 }

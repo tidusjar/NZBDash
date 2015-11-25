@@ -9,12 +9,14 @@ using NLog;
 
 using NZBDash.UI.Models;
 
+using ILogger = NZBDash.Common.Interfaces.ILogger;
+
 namespace NZBDash.UI.Controllers
 {
     public class LogController : BaseController
     {
-        public LogController()
-            : base(typeof(LogController))
+        public LogController(ILogger logger)
+            : base(logger)
         {
 
         }

@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 using NUnit.Framework;
 
 using NZBDash.Api.Models;
 using NZBDash.Common.Mapping;
-using NZBDash.UI.Models.NzbGet;
+using NZBDash.Common.Models.ViewModels.NzbGet;
 
 using Omu.ValueInjecter;
 
 namespace NZBDash.Common.Tests.Mapping
 {
     [TestFixture]
+    [ExcludeFromCodeCoverage]
     public class NzbGetHistoryMapperTest
     {
         [TestCaseSource("TestCaseData")]
@@ -32,14 +34,13 @@ namespace NZBDash.Common.Tests.Mapping
 
             Assert.That(target.Id, Is.EqualTo(id));
             Assert.That(target.NzbName, Is.EqualTo(nzbName));
-            Assert.That(target.FileSize, Is.EqualTo(fileSize));
+            Assert.That(target.FileSize, Is.EqualTo(fileSize.ToString()));
             Assert.That(target.Category, Is.EqualTo(category));
             Assert.That(target.Health, Is.EqualTo(health));
             Assert.That(target.HistoryTime, Is.EqualTo(historyTime));
             Assert.That(target.Status, Is.EqualTo(status));
             Assert.That(target.Name, Is.EqualTo(name));
         }
-
 
         private static IEnumerable<ITestCaseData> TestCaseData
         {

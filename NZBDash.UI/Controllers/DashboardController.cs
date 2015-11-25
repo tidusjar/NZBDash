@@ -1,81 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 
-using NZBDash.Api.Controllers;
-using NZBDash.Common;
+using NZBDash.Common.Mapping;
 using NZBDash.Common.Models.Hardware;
-using NZBDash.Core.Configuration;
 using NZBDash.Core.Interfaces;
-using NZBDash.Core.Settings;
-using NZBDash.UI.Helpers;
+using NZBDash.ThirdParty.Api.Interfaces;
 using NZBDash.UI.Models.Dashboard;
 
-using UrlHelper = NZBDash.UI.Helpers.UrlHelper;
+using Omu.ValueInjecter;
 
 namespace NZBDash.UI.Controllers
 {
     public class DashboardController : BaseController
     {
-        private IStatusApi Api { get; set; }
+        private IThirdPartyService Api { get; set; }
         private IHardwareService Service { get; set; }
+        private ILinksConfiguration LinksConfiguration { get; set; }
 
-        public DashboardController(IHardwareService service, IStatusApi statusApi)
+        public DashboardController(IHardwareService service, IThirdPartyService api, ILinksConfiguration linksConfiguration)
             : base(typeof(DashboardController))
         {
-            Api = statusApi;
+            Api = api;
             Service = service;
+            LinksConfiguration = linksConfiguration;
         }
 
         public ActionResult Index()
         {
             return View();
-        }
-
-        public ActionResult GetNzbGetDownloadInformation()
-        {
-            var admin = new NzbGetSettingsConfiguration();
-            var config = admin.GetSettings();
-            var formattedUri = UrlHelper.ReturnUri(config.IpAddress).ToString();
-            try
-            {
-                var statusInfo = Api.GetNzbGetStatus(formattedUri, config.Username, config.Password);
-
-                var downloadInfo = Api.GetNzbGetList(formattedUri, config.Username, config.Password);
-
-                var downloadSpeed = statusInfo.Result.DownloadRate / 1024;
-
-                var model = new DownloaderViewModel
-                {
-                    Application = Applications.NzbGet,
-                    DownloadSpeed = downloadSpeed.ToString(CultureInfo.CurrentUICulture),
-                    DownloadItem = new List<DownloadItem>()
-                };
-
-                var results = downloadInfo.result;
-                foreach (var result in results)
-                {
-                    var percentage = (result.DownloadedSizeMB / (result.RemainingSizeMB + (double)result.DownloadedSizeMB) * 100);
-
-                    model.DownloadItem.Add(new DownloadItem
-                    {
-                        FontAwesomeIcon = IconHelper.ChooseIcon(EnumHelper<DownloadStatus>.Parse(result.Status)),
-                        DownloadPercentage = Math.Ceiling(percentage).ToString(CultureInfo.InvariantCulture),
-                        DownloadingName = result.NZBName,
-                        Status = EnumHelper<DownloadStatus>.Parse(result.Status),
-                        NzbId = result.NZBID
-                    });
-                }
-
-                return PartialView("Partial/_Download", model);
-            }
-            catch (Exception e)
-            {
-                ViewBag.Error = e.Message;
-                return PartialView("Partial/DashletError");
-            }
         }
 
         public ActionResult GetDriveInformation()
@@ -86,10 +38,11 @@ namespace NZBDash.UI.Controllers
 
         public ActionResult GetLinks()
         {
-            var config = new LinksConfiguration();
-            var allLinks = config.GetLinks();
+            var allLinks = LinksConfiguration.GetLinks();
 
-            var model = allLinks.Select(link => new DashboardLinksViewModel { LinkEndpoint = link.LinkEndpoint, LinkName = link.LinkName }).ToList();
+            var model = allLinks.Select(link =>
+                (DashboardLinksViewModel)new DashboardLinksViewModel().InjectFrom(link))
+                .ToList();
 
             return PartialView("Partial/_Links", model);
         }
@@ -104,15 +57,13 @@ namespace NZBDash.UI.Controllers
         public ActionResult GetServerInformation()
         {
             var ramInfo = Service.GetRam();
-            var model = new ServerInformationViewModel
-            {
-                OsFullName = ramInfo.OSFullName,
-                OsPlatform = ramInfo.OSPlatform,
-                OsVersion = ramInfo.OSVersion,
-                Uptime = Service.GetUpTime(),
-                CpuPercentage = Service.GetCpuPercentage(),
-                AvailableMemory = Service.GetAvailableRam()
-            };
+
+            var model = new ServerInformationViewModel();
+            model.InjectFromJson<ServerInformationViewModel>(ramInfo);
+            model.CpuPercentage = Service.GetCpuPercentage();
+            model.AvailableMemory = Service.GetAvailableRam();
+            model.Uptime = Service.GetUpTime();
+
 
             return PartialView("Partial/_ServerInformation", model);
         }

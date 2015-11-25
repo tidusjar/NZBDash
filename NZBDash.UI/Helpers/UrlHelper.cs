@@ -1,11 +1,15 @@
 ﻿using System;
 
-using Microsoft.Ajax.Utilities;
-
 namespace NZBDash.UI.Helpers
 {
     public static class UrlHelper
     {
+        /// <summary>
+        /// Returns the URI.
+        /// </summary>
+        /// <param name="val">The value.</param>
+        /// <returns></returns>
+        /// <exception cref="System.Exception"></exception>
         public static Uri ReturnUri(string val)
         {
             try
@@ -44,12 +48,14 @@ namespace NZBDash.UI.Helpers
         }
 
 
+
         /// <summary>
-        /// Does not support string with queries
+        /// Returns the URI.
         /// </summary>
-        /// <param name="val"></param>
-        /// <param name="port"></param>
+        /// <param name="val">The value.</param>
+        /// <param name="port">The port.</param>
         /// <returns></returns>
+        /// <exception cref="System.Exception"></exception>
         public static Uri ReturnUri(string val, int port)
         {
             try
@@ -64,7 +70,7 @@ namespace NZBDash.UI.Helpers
                         uri = new UriBuilder(Uri.UriSchemeHttp, split[2], port, "/" + split[3]);
                     }
                     else
-                        uri = new UriBuilder(Uri.UriSchemeHttp, val, port);
+                        uri = new UriBuilder(new Uri(string.Format("{0}:{1}", val, port)));
                 }
                 else if (val.StartsWith("https://", StringComparison.Ordinal))
                 {

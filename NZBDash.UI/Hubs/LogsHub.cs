@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+using NZBDash.Common;
 using NZBDash.UI.Controllers;
 
 namespace NZBDash.UI.Hubs
@@ -13,7 +14,7 @@ namespace NZBDash.UI.Hubs
         public LogsHub()
             : base(typeof(LogController))
         {
-            Controller = new LogController();
+            Controller = new LogController(new NLogLogger(typeof(LogsHub)));
         }
 
         public void GetLogs()

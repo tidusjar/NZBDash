@@ -1,14 +1,14 @@
-﻿@model NZBDash.UI.Models.Settings.NzbGetSettingsViewModel
+﻿@using NZBDash.Resources
+@model NZBDash.UI.Models.Settings.NzbGetSettingsViewModel
 
 @{
-    ViewBag.Title = "NzbGetSettings";
+    ViewBag.Title = @Resources.Settings_NzbGet_Title;
 }
 <div class="container-fluid">
 
     <div class="row row-offcanvas row-offcanvas-left">
 
         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
-
             @Html.Partial("_Sidebar")
         </div>
         <div class="col-sm-9 col-md-10 main">
@@ -19,7 +19,6 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
-                    <h4>NzbGetSettingsViewModel</h4>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.HiddenFor(model => model.Id)

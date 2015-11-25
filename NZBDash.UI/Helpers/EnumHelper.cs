@@ -15,7 +15,14 @@ namespace NZBDash.UI.Helpers
 
         public static T Parse(string value)
         {
-            return (T)Enum.Parse(typeof(T), value, true);
+            try
+            {
+                return (T)Enum.Parse(typeof(T), value, true);
+            }
+            catch (Exception)
+            {
+                return default(T);
+            }
         }
 
         public static IList<string> GetNames(Enum value)

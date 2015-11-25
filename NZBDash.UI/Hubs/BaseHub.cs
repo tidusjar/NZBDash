@@ -7,6 +7,7 @@ using System.Web;
 using Microsoft.AspNet.SignalR;
 
 using NZBDash.Common;
+using NZBDash.Common.Interfaces;
 
 namespace NZBDash.UI.Hubs
 {

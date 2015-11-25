@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Applications_NzbGet_Download_NothingToSee" xml:space="preserve">
+    <value>Nothing to see here!</value>
+  </data>
+  <data name="Applications_NzbGet_Tab_History" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="Applications_NzbGet_Tab_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Applications_NzbGet_Title" xml:space="preserve">
+    <value>NzbGet</value>
+  </data>
+  <data name="Applications_Sonarr_Tab_TvShows" xml:space="preserve">
+    <value>TV Shows</value>
+  </data>
+  <data name="Applications_Sonarr_Title" xml:space="preserve">
+    <value>Sonarr</value>
+  </data>
+  <data name="Json" xml:space="preserve">
+    <value>[
+  {
+    "title": "Archer (2009)",
+    "seasonCount": 5,
+    "episodeCount": 47,
+    "episodeFileCount": 47,
+    "status": "continuing",
+    "overview": "At ISIS, an international spy agency, global crises are merely opportunities for its highly trained employees to confuse, undermine, betray and royally screw each other. At the center of it all is suave master spy Sterling Archer, whose less-than-masculine code name is \"Duchess.\" Archer works with his domineering mother Malory, who is also his boss. Drama revolves around Archer's ex-girlfriend, Agent Lana Kane and her new boyfriend, ISIS comptroller Cyril Figgis, as well as Malory's lovesick secretary, Cheryl.",
+    "nextAiring": "2014-01-21T03:00:00Z",
+    "network": "FX",
+    "airTime": "7:00pm",
+    "images": [
+      {
+        "coverType": "banner",
+        "url": "/MediaCover/7/banner.jpg?lastWrite=635114443841234311"
+      },
+      {
+        "coverType": "poster",
+        "url": "/MediaCover/7/poster.jpg?lastWrite=635114443843262329"
+      },
+      {
+        "coverType": "fanart",
+        "url": "/MediaCover/7/fanart.jpg?lastWrite=635114443844822347"
+      }
+    ],
+    "seasons": [
+      {
+        "seasonNumber": 5,
+        "monitored": true
+      },
+      {
+        "seasonNumber": 4,
+        "monitored": true
+      },
+      {
+        "seasonNumber": 3,
+        "monitored": true
+      },
+      {
+        "seasonNumber": 2,
+        "monitored": true
+      },
+      {
+        "seasonNumber": 1,
+        "monitored": true
+      },
+      {
+        "seasonNumber": 0,
+        "monitored": false
+      }
+    ],
+    "year": 0,
+    "path": "T:\\Archer (2009)",
+    "qualityProfileId": 1,
+    "seasonFolder": true,
+    "monitored": true,
+    "useSceneNumbering": false,
+    "runtime": 30,
+    "tvdbId": 110381,
+    "tvRageId": 23354,
+    "firstAired": "2009-09-18T02:00:00Z",
+    "lastInfoSync": "2014-01-17T05:10:23.253208Z",
+    "seriesType": "standard",
+    "cleanTitle": "archer2009",
+    "imdbId": "tt1486217",
+    "titleSlug": "archer-2009",
+    "id": 1
+  }
+]</value>
+  </data>
+  <data name="Settings_ApiKey" xml:space="preserve">
+    <value>Api Key</value>
+  </data>
+  <data name="Settings_CouchPotato_Title" xml:space="preserve">
+    <value>CouchPotato Settings</value>
+  </data>
+  <data name="Settings_Enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="Settings_IpAddress" xml:space="preserve">
+    <value>IP Address/Host name</value>
+  </data>
+  <data name="Settings_NzbGet_Title" xml:space="preserve">
+    <value>NzbGet Settings</value>
+  </data>
+  <data name="Settings_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Settings_Plex_Title" xml:space="preserve">
+    <value>Plex Settings</value>
+  </data>
+  <data name="Settings_Port" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="Settings_SabNzb_Title" xml:space="preserve">
+    <value>SabNzb Settings</value>
+  </data>
+  <data name="Settings_ShowOnDashboard" xml:space="preserve">
+    <value>Display on dashboard</value>
+  </data>
+  <data name="Settings_Sonarr_Title" xml:space="preserve">
+    <value>Sonarr Settings</value>
+  </data>
+  <data name="Settings_Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+</root>

@@ -6,7 +6,7 @@ namespace NZBDash.UI.Models.Settings
     {
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "Api Key")]
+        [Display(Name = "Settings_ApiKey", ResourceType = typeof(Resources.Resources))]
         public string ApiKey { get; set; }
     }
 }

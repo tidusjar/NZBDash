@@ -1,46 +1,49 @@
-﻿
+﻿@using NZBDash.Resources
+@using NZBDash.UI.Helpers
 @{
-    ViewBag.Title = "NzbGet";
+    ViewBag.Title = @Resources.Applications_NzbGet_Title;
 }
-<link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.common.min.css">
-<link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.rtl.min.css">
-<link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.default.min.css">
-<link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.mobile.all.min.css">
-
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://kendo.cdn.telerik.com/2015.3.1111/js/angular.min.js"></script>
-<script src="http://kendo.cdn.telerik.com/2015.3.1111/js/jszip.min.js"></script>
-<script src="http://kendo.cdn.telerik.com/2015.3.1111/js/kendo.all.min.js"></script>
 
 <h2>@ViewBag.Title</h2>
 <h3 id="status"></h3>
 
 
 <ul class="nav nav-tabs">
-    <li id="HomeTab" role="presentation" class="active"><a id="Home" href="#">Home</a></li>
-    <li id="HistoryTab" role="presentation"><a id="History" href="#">History</a></li>
-    @*<li role="presentation"><a href="#">Messages</a></li>*@
+    <li id="HomeTab" role="presentation" class="active"><a id="Home" href="#">@Resources.Applications_NzbGet_Tab_Home</a></li>
+    <li id="HistoryTab" role="presentation"><a id="History" href="#">@Resources.Applications_NzbGet_Tab_History</a></li>
 </ul>
 
-<div id="DownloadArea"></div>
-<div id="HistoryArea"></div>
+
+<div id="DownloadArea">
+    @Html.AjaxPanel()
+</div>
+<div id="HistoryArea" hidden="hidden">
+    @Html.AjaxPanel()
+</div>
+
+
+
 
 @section scripts
 {
-    @Scripts.Render("~/bundles/gridster")
-    @Styles.Render("~/Content/gridster")
-
-    <script src="~/Scripts/Highcharts.js"></script>
-    <script src="~/Scripts/Dashboard.js"></script>
-    <script src="http://code.highcharts.com/modules/data.js"></script>
-    <script src="http://code.highcharts.com/modules/drilldown.js"></script>
 
     <script>
         $(function () {
+
+                     $.ajax("@Url.Action("GetNzbGetDownloadInformation")").success(function (view) {
+                    $("#DownloadArea").html(view);
+                });
+
+
+                $.ajax("@Url.Action("GetNzbGetStatus")").success(function (data) {
+                    $('#status').html(data.Status);
+                });
+
+
             setInterval(function () {
 
                 $.ajax("@Url.Action("GetNzbGetDownloadInformation")").success(function (view) {
-                    $('#DownloadArea').html(view);
+                    $("#DownloadArea").html(view);
                 });
 
 
@@ -71,5 +74,5 @@
 
         });
     </script>
-}
 
+}

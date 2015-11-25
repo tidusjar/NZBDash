@@ -6,10 +6,16 @@ namespace NZBDash.Common.Models.Hardware
     public class RamModel
     {
         [Display(Name = "Virtual Percentage Filled")]
-        public int VirtualPercentageFilled { get; set; }
+        public int VirtualPercentageFilled
+        {
+            get { return 100 - (int)(AvailableVirtualMemory * 100 / TotalVirtualMemory); }
+        }
 
         [Display(Name = "Physical Percentage Filled")]
-        public int PhysicalPercentageFilled { get; set; }
+        public int PhysicalPercentageFilled
+        {
+            get { return 100 - (int)(AvailablePhysicalMemory * 100 / TotalPhysicalMemory); }
+        }
 
         [Display(Name = "Available Physical Memory")]
         public ulong AvailablePhysicalMemory { get; set; }

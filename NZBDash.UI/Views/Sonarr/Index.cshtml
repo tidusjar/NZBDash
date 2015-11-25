@@ -1,0 +1,25 @@
+﻿@using NZBDash.Resources
+@using NZBDash.UI.Helpers
+@{
+    ViewBag.Title = @Resources.Applications_Sonarr_Title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<ul class="nav nav-tabs">
+    <li id="HomeTab" role="presentation" class="active"><a id="Home" href="#">@Resources.Applications_Sonarr_Tab_TvShows</a></li>
+</ul>
+
+<div id="Series">
+    @Html.AjaxPanel()
+</div>
+
+<script>
+    $(function() {
+
+        $.ajax("@Url.Action("GetSeries")").success(function (view) {
+            $('#Series').html(view);
+        });
+    });
+</script>

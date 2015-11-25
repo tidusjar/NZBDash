@@ -1,4 +1,6 @@
-﻿namespace NZBDash.Core.Model.Settings
+﻿using NZBDash.Common.Models.Settings;
+
+namespace NZBDash.Core.Model.Settings
 {
     public class SabNzbSettingsDto : BaseSettingsDto
     {

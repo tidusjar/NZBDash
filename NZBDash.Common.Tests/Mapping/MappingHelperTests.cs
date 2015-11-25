@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 using NUnit.Framework;
 
@@ -7,6 +8,7 @@ using NZBDash.Common.Mapping;
 namespace NZBDash.Common.Tests.Mapping
 {
     [TestFixture]
+    [ExcludeFromCodeCoverage]
     public class MappingHelperTests
     {
         [Test]

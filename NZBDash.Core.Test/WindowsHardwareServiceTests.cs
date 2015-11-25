@@ -30,6 +30,8 @@ namespace NZBDash.Core.Test
             var result = Service.GetRam();
 
             Assert.That(result, Is.Not.Null);
+            Assert.That(result.PhysicalPercentageFilled, Is.Not.Null);
+            Assert.That(result.VirtualPercentageFilled, Is.Not.Null);
         }
 
         [Test]
@@ -47,6 +49,26 @@ namespace NZBDash.Core.Test
 
             Assert.That(process, Is.Not.Null);
             Assert.That(process, Is.GreaterThan(0));
+        }
+
+        [Test]
+        public void GetCpuPercentage()
+        {
+            var process = Service.GetCpuPercentage();
+
+            Assert.That(process, Is.Not.Null);
+            Assert.That(process, Is.GreaterThan(0));
+        }
+
+        [Test]
+        public void GetNetworkInformation()
+        {
+            var process = Service.GetNetworkInformation();
+
+            Assert.That(process, Is.Not.Null);
+            Assert.That(process.Recieved, Is.Not.Null);
+            Assert.That(process.Sent, Is.Not.Null);
+            Assert.That(process.Total, Is.Not.Null);
         }
     }
 }

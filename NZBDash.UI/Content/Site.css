@@ -77,4 +77,15 @@ footer {
   margin-top: 0;
 }
 
- 
+ .k-listview {
+    padding: 0;
+    border: none;
+}
+ .k-widget {
+    padding: 0;
+    border: none;
+}
+
+ .tabstrip_ts_active {
+     border: none;
+ }

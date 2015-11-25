@@ -23,7 +23,7 @@ namespace NZBDash.UI.Test.Controllers
         public void GetNzbGetSettingsReturnsDefaultViewWithModel()
         {
             var expectedDto = new NzbGetSettingsDto { Enabled = true, Id = 2, IpAddress = "192", Password = "pass", Port = 2, ShowOnDashboard = true, Username = "user" };
-            var settingsMock = new Mock<ISettings<NzbGetSettingsDto>>();
+            var settingsMock = new Mock<ISettingsService<NzbGetSettingsDto>>();
 
             settingsMock.Setup(x => x.GetSettings()).Returns(expectedDto).Verifiable();
 
@@ -54,7 +54,7 @@ namespace NZBDash.UI.Test.Controllers
         public void PostNzbGetSettingsReturnsErrorWithBadModel()
         {
             var expectedDto = new NzbGetSettingsDto { Enabled = true, Id = 2, IpAddress = "192", Password = "pass", Port = 2, ShowOnDashboard = true, Username = "user" };
-            var settingsMock = new Mock<ISettings<NzbGetSettingsDto>>();
+            var settingsMock = new Mock<ISettingsService<NzbGetSettingsDto>>();
 
             settingsMock.Setup(x => x.GetSettings()).Returns(expectedDto).Verifiable();
             settingsMock.Setup(x => x.SaveSettings(It.IsAny<NzbGetSettingsDto>())).Returns(true).Verifiable();
@@ -68,7 +68,7 @@ namespace NZBDash.UI.Test.Controllers
         public void PostNzbGetSettingsReturnsDefaultView()
         {
             var expectedDto = new NzbGetSettingsDto { Enabled = true, Id = 2, IpAddress = "192", Password = "pass", Port = 2, ShowOnDashboard = true, Username = "user" };
-            var settingsMock = new Mock<ISettings<NzbGetSettingsDto>>();
+            var settingsMock = new Mock<ISettingsService<NzbGetSettingsDto>>();
 
             settingsMock.Setup(x => x.GetSettings()).Returns(expectedDto).Verifiable();
             settingsMock.Setup(x => x.SaveSettings(It.IsAny<NzbGetSettingsDto>())).Returns(true).Verifiable();
@@ -83,7 +83,7 @@ namespace NZBDash.UI.Test.Controllers
         public void PostNzbGetSettingsCouldNotSaveToDb()
         {
             var expectedDto = new NzbGetSettingsDto { Enabled = true, Id = 2, IpAddress = "192", Password = "pass", Port = 2, ShowOnDashboard = true, Username = "user" };
-            var settingsMock = new Mock<ISettings<NzbGetSettingsDto>>();
+            var settingsMock = new Mock<ISettingsService<NzbGetSettingsDto>>();
 
             settingsMock.Setup(x => x.GetSettings()).Returns(expectedDto).Verifiable();
             settingsMock.Setup(x => x.SaveSettings(It.IsAny<NzbGetSettingsDto>())).Returns(false).Verifiable();
@@ -98,7 +98,7 @@ namespace NZBDash.UI.Test.Controllers
         public void GetSonarrSettingsReturnsDefaultView()
         {
             var expectedDto = new SonarrSettingsViewModelDto { Enabled = true, Id = 2, IpAddress = "192", ApiKey = "pass", Port = 2, ShowOnDashboard = true };
-            var settingsMock = new Mock<ISettings<SonarrSettingsViewModelDto>>();
+            var settingsMock = new Mock<ISettingsService<SonarrSettingsViewModelDto>>();
 
             settingsMock.Setup(x => x.GetSettings()).Returns(expectedDto).Verifiable();
 
@@ -120,7 +120,7 @@ namespace NZBDash.UI.Test.Controllers
         public void PostSonarrSettingsReturnsErrorWithBadModel()
         {
             var expectedDto = new SonarrSettingsViewModelDto { Enabled = true, Id = 2, IpAddress = "192", ApiKey = "pass", Port = 2, ShowOnDashboard = true };
-            var settingsMock = new Mock<ISettings<SonarrSettingsViewModelDto>>();
+            var settingsMock = new Mock<ISettingsService<SonarrSettingsViewModelDto>>();
 
             settingsMock.Setup(x => x.GetSettings()).Returns(expectedDto);
             settingsMock.Setup(x => x.SaveSettings(It.IsAny<SonarrSettingsViewModelDto>())).Returns(true).Verifiable();
@@ -135,7 +135,7 @@ namespace NZBDash.UI.Test.Controllers
         public void PostSonarrSettingsReturnsDefaultView()
         {
             var expectedDto = new SonarrSettingsViewModelDto { Enabled = true, Id = 2, IpAddress = "192", ApiKey = "pass", Port = 2, ShowOnDashboard = true };
-            var settingsMock = new Mock<ISettings<SonarrSettingsViewModelDto>>();
+            var settingsMock = new Mock<ISettingsService<SonarrSettingsViewModelDto>>();
 
             settingsMock.Setup(x => x.GetSettings()).Returns(expectedDto);
             settingsMock.Setup(x => x.SaveSettings(It.IsAny<SonarrSettingsViewModelDto>())).Returns(true).Verifiable();
@@ -150,7 +150,7 @@ namespace NZBDash.UI.Test.Controllers
         public void PostSonarrSettingsCouldNotSaveToDb()
         {
             var expectedDto = new SonarrSettingsViewModelDto { Enabled = true, Id = 2, IpAddress = "192", ApiKey = "pass", Port = 2, ShowOnDashboard = true };
-            var settingsMock = new Mock<ISettings<SonarrSettingsViewModelDto>>();
+            var settingsMock = new Mock<ISettingsService<SonarrSettingsViewModelDto>>();
 
             settingsMock.Setup(x => x.GetSettings()).Returns(expectedDto);
             settingsMock.Setup(x => x.SaveSettings(It.IsAny<SonarrSettingsViewModelDto>())).Returns(false).Verifiable();

@@ -4,6 +4,7 @@ using System.IO;
 using NUnit.Framework;
 
 using NZBDash.Common;
+using NZBDash.Common.Interfaces;
 
 namespace NZBDash.Core.Test
 {

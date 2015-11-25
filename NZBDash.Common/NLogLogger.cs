@@ -1,6 +1,8 @@
 ﻿using System;
 using NLog;
 
+using ILogger = NZBDash.Common.Interfaces.ILogger;
+
 namespace NZBDash.Common
 {
     public class NLogLogger : ILogger

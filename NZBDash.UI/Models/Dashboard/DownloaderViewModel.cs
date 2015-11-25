@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Security.AccessControl;
 using NZBDash.Common;
 
 namespace NZBDash.UI.Models.Dashboard

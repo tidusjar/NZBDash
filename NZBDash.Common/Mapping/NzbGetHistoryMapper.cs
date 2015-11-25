@@ -18,7 +18,7 @@ namespace NZBDash.Common.Mapping
             var fileSizeVal = source.FileSizeMB;
             if (fileSizeVal == default(int)) return;
 
-            fileSize.SetValue(target, fileSizeVal);
+            fileSize.SetValue(target, fileSizeVal.ToString());
         }
     }
 }
