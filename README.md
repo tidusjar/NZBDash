@@ -1,5 +1,6 @@
 <a href="https://ci.appveyor.com/project/tidusjar/NZBDash"><image src="https://ci.appveyor.com/api/projects/status/github/tidusjar/NZBDash?branch=SettingsPage&svg=true" height="18"></a> 
 
+<a href="https://nzbdash.slack.com/messages/general/">Join us on Slack!</a>
 
 # NZBDash
 
